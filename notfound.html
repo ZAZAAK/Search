@@ -3,11 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Not Found</title>
-   <H1>Soory this page is still under maintenance,-</H1>
-       <p><a href="https://zazaak.github.io/FcRedeem.Fifa/Ea.html">click here to get back</a></p>
-
-    <img src="https://startupsmagazine.co.uk/sites/default/files/2023-03/main-tools.png" alt="get back to website">
+    <title>Device & IP Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #111;
+            color: #fff;
+            padding: 20px;
+        }
+        .container {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Your Device & IP Information</h2>
+        <p id="device-info">Loading...</p>
+        <p id="ip-info">Fetching IP...</p>
+        <h3 style="color: red;">Don't give this to anyone</h3>
+        <img src="https://via.placeholder.com/400" alt="Warning Image">
     </div>
+
+    <script>
+        function getDeviceInfo() {
+            let info = `Platform: ${navigator.platform} <br> Browser: ${navigator.userAgent}`;
+            document.getElementById("device-info").innerHTML = info;
+        }
+
+        async function getIP() {
+            try {
+                let response = await fetch('https://api64.ipify.org?format=json');
+                let data = await response.json();
+                document.getElementById("ip-info").innerHTML = `IP Address: ${data.ip}`;
+            } catch (error) {
+                document.getElementById("ip-info").innerHTML = "Failed to fetch IP.";
+            }
+        }
+
+        getDeviceInfo();
+        getIP();
+    </script>
 </body>
 </html>
